@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html >
+<html>
 
 <head>
     <title>GemStore</title>
@@ -16,7 +16,7 @@
     <main class="container">
         <div class="row" ng-controller="myController">
             <div class="col-xs-12" ng-repeat="product in Model">
-                <div class="panel panel-default" >
+                <div class="panel panel-default">
                     <div class="panel-heading">
                         {{product.name}}
                     </div>
@@ -27,7 +27,27 @@
                         <p ng-repeat="image in product.images">
                             <img ng-src="{{image.full}}">
                         </p>
-                        <p>{{product.description}}</p>
+                        <section ng-controller="PanelController">
+                            <ul class="nav nav-pills">
+                                <li ng-class="{active:tab === 1}"><a ng-click="selectTab(1)" href>Description</a></li>
+                                <li ng-class="{active:tab === 2}"><a ng-click="selectTab(2)" href>Specifications</a></li>
+                                <li ng-class="{active:tab === 3}"><a ng-click="selectTab(3)" href>Reviews</a></li>
+                            </ul>
+                            <div class="panel" ng-show="tab === 1">
+                                <h4>Description</h4>
+                                <p>{{product.description}}</p>
+                            </div>
+                            <div class="panel" ng-show="tab === 2">
+                                <h4>Specifications</h4>
+                                <blockquote>In Development</blockquote>
+                            </div>
+                            <div class="panel" ng-show="tab === 3">
+                                <h4>Reviews</h4>
+                                <blockquote>In Development</blockquote>
+                            </div>
+                        </section>
+                        
+
                         <button class="btn btn-success" ng-show="product.canPurchase">Add To Cart</button>
                         <button class="btn btn-danger" ng-show="!product.canPurchase">SOLD OUT!</button>
                     </div>
