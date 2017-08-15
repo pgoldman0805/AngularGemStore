@@ -15,7 +15,7 @@
     </nav>
     <main class="container">
         <div class="row" ng-controller="myController">
-            <div class="col-xs-12" ng-repeat="product in Model">
+            <div class="col-xs-4" ng-repeat="product in Model">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         {{product.name}}
@@ -41,17 +41,45 @@
                                 <h4>Specifications</h4>
                                 <blockquote>In Development</blockquote>
                             </div>
-                            <div class="panel" ng-show="tab === 3" ng-controller="ReviewController">
+                            <div class="panel" ng-show="tab === 3">
                                 <h4>Reviews</h4>
                                 <blockquote ng-repeat="review in product.reviews">
-                                    <b>Stars: {{review.stars}} </b>
-                                    {{ review.body}}
+                                    <b>Stars: {{review.stars}} </b><br/> {{ review.body}}
                                     <cite>By: {{review.author}} </cite>
                                 </blockquote>
-<!--                                <p >{{review}}</p>-->
+
+                                <h4>Write A Review</h4>
+                                <form name="reviewForm" ng-controller="ReviewController" ng-submit="reviewForm.$valid && addReview(product)" novalidate>
+                                    <blockquote>
+                                        <b>Stars: {{newReview.stars}}</b><br/>
+                                        {{newReview.body}}
+                                        <cite>by: {{newReview.author}}</cite>
+                                    </blockquote>
+                                    <div class="form-group" ng-class="{'has-error':reviewForm.stars.$dirty && reviewForm.stars.$invalid}">
+                                        <label class="control-label" for="stars">Rating:</label>
+                                        <select name="stars" class="form-control" ng-model="newReview.stars" required>
+                                            <option value="">Please select a rating</option>
+                                            <option value="1">1 star</option>
+                                            <option value="2">2 star</option>
+                                            <option value="3">3 star</option>
+                                            <option value="4">4 star</option>
+                                            <option value="5">5 star</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group has-feedback" ng-class="{'has-error':reviewForm.body.$dirty && reviewForm.body.$invalid}">
+                                        <label class="control-label" for="body">Review:</label>
+                                        <textarea name="body" class="form-control" placeholder="Write a review..." ng-model="newReview.body" required></textarea>
+                                    </div>
+                                    <div class="form-group has-feedback" ng-class="{'has-error':reviewForm.author.$dirty && reviewForm.author.$invalid}">
+                                        <label class="control-label" for="author">E-mail address:</label>
+                                        <input type="email" placeholder="E-mail address" name="author" class="form-control" ng-model="newReview.author" required/>
+                                    </div>
+                                    <input type="submit" value="Add a review" class="btn btn-default" ng-disabled="!reviewForm.$valid"/>
+                                </form>
+
                             </div>
                         </section>
-                        
+
 
                         <button class="btn btn-success" ng-show="product.canPurchase">Add To Cart</button>
                         <button class="btn btn-danger" ng-show="!product.canPurchase">SOLD OUT!</button>
