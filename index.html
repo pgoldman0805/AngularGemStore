@@ -41,9 +41,14 @@
                                 <h4>Specifications</h4>
                                 <blockquote>In Development</blockquote>
                             </div>
-                            <div class="panel" ng-show="tab === 3">
+                            <div class="panel" ng-show="tab === 3" ng-controller="ReviewController">
                                 <h4>Reviews</h4>
-                                <blockquote>In Development</blockquote>
+                                <blockquote ng-repeat="review in product.reviews">
+                                    <b>Stars: {{review.stars}} </b>
+                                    {{ review.body}}
+                                    <cite>By: {{review.author}} </cite>
+                                </blockquote>
+<!--                                <p >{{review}}</p>-->
                             </div>
                         </section>
                         
