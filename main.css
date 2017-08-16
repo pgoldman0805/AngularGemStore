@@ -1,11 +1,14 @@
+.red {
+    color: red;
+}
 
 body {
-    background-color: #F8F8F8;
+/*    background-color: #F8F8F8;*/
     margin: 0;
     padding: 0;
 }
 .panel-body {
-    background-color: #F8F8F8;
+/*    background-color: #F8F8F8;*/
 }
 #price {
     font-size: 1.75em;
@@ -18,9 +21,20 @@ body {
     text-align: center;
 }
 
+/*
 .panel{
     h4{
         margin: 2em;
     }
-/*    padding: 2em;*/
+    padding: 2em;
 }
+*/
+
+.form-group span{
+/*    margin-left: 1em;*/
+}
+/*
+
+.form-group * {
+    width: 100%;
+}*/

@@ -77,27 +77,42 @@
     // Using the "one-argument" call will fetch a previously defined module from the angular runtime.
     myApp.controller("myController", function ($scope) {
         $scope.Model = products;
-        //    alert("welcome, Paul!");
     });
 
-    myApp.controller("PanelController", function ($scope) {
-        $scope.tab = 1;
-        $scope.selectTab = function (newTab) {
-            $scope.tab = newTab;
+    myApp.directive("storePanels", function () {
+        return {
+            restrict: 'E',
+            templateUrl: "templates/store-panels.html",
+            controller: function ($scope) {
+                $scope.tab = 1;
+                $scope.selectTab = function (newTab) {
+                    $scope.tab = newTab;
+                };
+            }
         };
     });
 
-    myApp.controller("ReviewController", function ($scope) {
-        $scope.newReview = {};
-        $scope.addReview = function (product) {
-            if (!product.reviews) {
-                product.reviews = [];
-            }
+    myApp.directive("reviews", function () {
+        return {
+            restrict: 'E',
+            templateUrl: "templates/store-reviews.html",
+            controller: function ($scope) {
+                $scope.newReview = {};
 
-            product.reviews.push($scope.newReview);
-            //TODO: Come back to this later and send the new review to an API so it can be saved.
-            $scope.reviewForm.$setPristine();
-            $scope.newReview = {};
+                $scope.addReview = function (product) {
+
+                    $scope.reviewForm.body.$setDirty();
+                    if (!product.reviews) {
+                        product.reviews = [];
+                    }
+
+                    product.reviews.push($scope.newReview);
+                    //TODO: Come back to this later and send the new review to an API so it can be saved.
+
+                    $scope.reviewForm.$setPristine();
+                    $scope.newReview = {};
+                };
+            }
         };
     });
 
