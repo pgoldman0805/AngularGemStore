@@ -72,49 +72,13 @@
 
         //Using the "two-argument" call to 'module' defines a module
         // The 2nd argument ([]) allows you to supply a list of other modules that you "inject" into this module. 
-        myApp = angular.module("myApp", []);
+        myApp = angular.module("myApp", ["storeProducts"]);
 
     // Using the "one-argument" call will fetch a previously defined module from the angular runtime.
     myApp.controller("myController", function ($scope) {
         $scope.Model = products;
     });
 
-    myApp.directive("storePanels", function () {
-        return {
-            restrict: 'E',
-            templateUrl: "templates/store-panels.html",
-            controller: function ($scope) {
-                $scope.tab = 1;
-                $scope.selectTab = function (newTab) {
-                    $scope.tab = newTab;
-                };
-            }
-        };
-    });
-
-    myApp.directive("reviews", function () {
-        return {
-            restrict: 'E',
-            templateUrl: "templates/store-reviews.html",
-            controller: function ($scope) {
-                $scope.newReview = {};
-
-                $scope.addReview = function (product) {
-
-                    $scope.reviewForm.body.$setDirty();
-                    if (!product.reviews) {
-                        product.reviews = [];
-                    }
-
-                    product.reviews.push($scope.newReview);
-                    //TODO: Come back to this later and send the new review to an API so it can be saved.
-
-                    $scope.reviewForm.$setPristine();
-                    $scope.newReview = {};
-                };
-            }
-        };
-    });
 
     // This is a custom directive that I've defined, not something built into Angular. I can stitch the div into my code by putting <my-directive /> into a page, as long as it is a descendant of myApp.
     myApp.directive("myDirective", function () {
