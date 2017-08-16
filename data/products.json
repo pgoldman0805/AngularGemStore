@@ -1,0 +1,48 @@
+[{
+    "name": "Dodecahedron",
+    "price": 2.95,
+    "description": "Some gems have hidden qualities beyond their lustre, beyond their shine... Dodecahedron is one of those gems.",
+    "canPurchase": false,
+    "images": [{
+        "full": "https://raw.githubusercontent.com/CodingTemple/CodingTemple.Angular.GemStore/master/images/gem-03.gif"
+    }],
+    "reviews": [{
+        "stars": 5,
+        "body": "I love this product",
+        "author": "josephj@codingtemple.com"
+    }, {
+        "stars": 3,
+        "body": "I somewhat like this product",
+        "author": "skdjfh@codingtemple.com"
+    }]
+}, {
+    "name": "Ruby",
+    "price": 5.95,
+    "description": "Ruby ruby ruby rubyyyy.",
+    "canPurchase": true,
+    "images": [{
+        "full": "https://raw.githubusercontent.com/CodingTemple/CodingTemple.Angular.GemStore/master/images/gem-01.gif"
+    }],
+    "reviews": [{
+        "stars": 4,
+        "body": "I like this product :)",
+        "author": "asd@codingtemple.com"
+    }, {
+        "stars": 1,
+        "body": "I hate, I mean HATE this product",
+        "author": "983745kj@codingtemple.com"
+    }]
+}, {
+    "name": "Pentagonal Gem",
+    "price": 8.95,
+    "description": "The pentagonal gem's origin is unknown, hence it's low price.",
+    "canPurchase": true,
+    "images": [{
+        "full": "https://raw.githubusercontent.com/CodingTemple/CodingTemple.Angular.GemStore/master/images/gem-02.gif"
+    }],
+    "reviews": [{
+        "stars": 5,
+        "body": "I love this product soooooo much",
+        "author": "987345jkhsdf@codingtemple.com"
+    }]
+}]
