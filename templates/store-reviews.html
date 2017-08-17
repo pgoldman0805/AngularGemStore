@@ -1,5 +1,6 @@
 
 <blockquote ng-repeat="review in product.reviews">
+    <img ng-init="avatar = avatar.generate(review.author)" ng-src="{{avatar}}" />
     <b>Stars: {{review.stars}} </b><br/> {{ review.body}}
     <cite>By: {{review.author}} </cite>
 </blockquote>
